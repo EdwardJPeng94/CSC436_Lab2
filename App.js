@@ -3,7 +3,6 @@ import UserBar from "./user/UserBar";
 import ToDoList from "./todo/ToDoList";
 import CreateToDo from "./todo/CreateToDo";
 import appReducer from "./reducers";
-
 function App() {
   const initialPosts = [
     {
