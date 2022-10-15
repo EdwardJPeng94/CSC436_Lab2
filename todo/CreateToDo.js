@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { v4 as uuidv4 } from "uuid";
 export default function CreateToDo({ user, posts, dispatch, time }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -9,10 +9,12 @@ export default function CreateToDo({ user, posts, dispatch, time }) {
       onSubmit={(e) => {
         e.preventDefault();
         dispatch({
-          type: "CREATE_POST",
+          type: "CREATE_TODO",
           title,
           content,
           author: user,
+          id: uuidv4(),
+          time: Date(Date.now()),
         });
       }}
     >

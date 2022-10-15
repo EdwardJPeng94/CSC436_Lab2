@@ -4,7 +4,7 @@ export default function ToDoList({ posts = [] }) {
   return (
     <div>
       {posts.map((p, i) => (
-        <ToDo {...p} key={"post-" + i} />
+        <ToDo {...p} key={p.id} />
       ))}
     </div>
   );

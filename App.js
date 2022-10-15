@@ -3,6 +3,7 @@ import UserBar from "./user/UserBar";
 import ToDoList from "./todo/ToDoList";
 import CreateToDo from "./todo/CreateToDo";
 import appReducer from "./reducers";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const initialPosts = [
@@ -11,29 +12,16 @@ function App() {
       content: "Eggs, milk, bread",
       author: "Eddie",
       time: Date(Date.now()),
+      id: uuidv4(),
     },
     {
       title: "Clean the kitchen",
       content: "Wipe down counters, clean the dishes",
       author: "Paul",
       time: Date(Date.now()),
+      id: uuidv4(),
     },
   ];
-
-  // Don't manage global state like this in a real app
-  // const [globalState, updateGlobalState] = useState({
-  //   user: "",
-  //   posts: [],
-  //   comments: []
-  // })
-  // updateGlobalState({ ...globalState, user: "Paul" })
-
-  //const [user, setUser] = useState("");
-
-  //const [user, dispatchUser] = useReducer(userReducer, "");
-
-  //const [posts, setPosts] = useState(initialPosts);
-  //const [posts, dispatchPosts] = useReducer(postReducer, initialPosts);
 
   const [state, dispatch] = useReducer(appReducer, {
     user: "",

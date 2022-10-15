@@ -10,16 +10,19 @@ function userReducer(state, action) {
   }
 }
 
-function postReducer(state, action) {
+function todoReducer(state, action) {
   switch (action.type) {
-    case "CREATE_POST":
+    case "CREATE_TODO":
       const newPost = {
         title: action.title,
         content: action.content,
         author: action.author,
-        time: Date(Date.now()),
+        time: action.time,
+        id: action.id,
       };
       return [newPost, ...state];
+    case "TOGGLE_TODO":
+    case "DELETE_TODO":
     default:
       return state;
   }
@@ -28,6 +31,6 @@ function postReducer(state, action) {
 export default function appReducer(state, action) {
   return {
     user: userReducer(state.user, action),
-    posts: postReducer(state.posts, action),
+    posts: todoReducer(state.posts, action),
   };
 }
